@@ -1,35 +1,43 @@
 #include "../includes/telescope.h"
 
+// void	options(t_line **book)
+// {
+
+// }
+
 int		main(int argc, char **argv)
 {
 	t_line	*head = NULL;
 	char	*line = NULL;
+	int		count = 0;
 	int		fd;
 
 	if (argc != 2)
 	{
-		ft_putstr("No file given as input!\n");
+		ft_putstr_colour(RED, "Nothing has been given as input!\n");
 		return (0);
 	}
 	fd = open(argv[1], O_RDONLY);
 	if (fd < 2)
 	{
-		ft_putstr("Could not find file!\n");
+		ft_putstr_colour(RED, "Could not find the suggested input!\n");
 		return (0);
 	}
 	while (get_next_line(fd, &line) > 0)
 	{
 		if (line)
 		{
-			add_line(&head, line);
+			add_line(&head, line, ++count);
 			free(line);
 		}
 		else
 		{
-			ft_putstr("No content read!\n");
+			ft_putstr_colour(RED, "No content found!\n");
 			return (0);
 		}
 	}
 	close(fd);
+	//options(&head);
+	//free_book(&head);
 	return (0);
 }
