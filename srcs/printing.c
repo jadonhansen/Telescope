@@ -27,7 +27,7 @@ void	print_param(t_line **book, char *name)
 		while (temp->next != NULL)
 			temp = temp->next;
 		ft_putnbr(temp->page_no);
-		ft_putstr_colour(BLUE, "\n\nHow would you like to search your document? Enter your chosen option and press ENTER\n");
-		ft_putstr("(1) : Search for a specific word\n(2) : Search for specific phrase\n(3) : Search by line number\n\n(Q) : Quit program\n");
+		ft_putstr_colour(CYAN, "\n\n\nHow would you like to search your document? Enter your chosen option and press ENTER\n");
+		ft_putstr("(1) : Search for a specific word\n(2) : Search for specific phrase\n(3) : Search by line number\n(4) : Quit program\n\n");
 	}
 }

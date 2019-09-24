@@ -25,10 +25,23 @@ int		word_count(char *word)
 	return (0);
 }
 
+int		strdigitwhitespace(char *line)
+{
+	int	i = 0;
+	while (line[i] != '\0')
+	{
+		if (line[i] == ' '  || line[i] == '\t' || (line[i] >= '0' && line[i] <= '9'))
+			i++;
+		else
+			return (0);
+	}
+	return (1);
+}
+
 void	options(t_line **book, char *name)
 {
 	int		parameter = 0;
-	char	search[1000];
+	char	*search;
 
 	print_header();
 	print_param(book, name);
@@ -37,7 +50,7 @@ void	options(t_line **book, char *name)
 	if (parameter == 1)
 	{
 		ft_putstr_colour(CYAN, "Please enter your search word below and press ENTER:\n");
-		scanf("%s", search);
+		get_next_line(0, &search);
 		if (word_count(search) == 1)
 			word_search(book, search);
 		else
@@ -49,7 +62,7 @@ void	options(t_line **book, char *name)
 	else if (parameter == 2)
 	{
 		ft_putstr_colour(CYAN, "Please enter your search phrase below and press ENTER:\n");
-		scanf("%s", search);
+		get_next_line(0, &search);
 		if (word_count(search) > 1)
 			phrase_search(book, search);
 		else
@@ -61,8 +74,8 @@ void	options(t_line **book, char *name)
 	else if (parameter == 3)
 	{
 		ft_putstr_colour(CYAN, "Please enter your line number below and press ENTER:\n");
-		scanf("%s", search);
-		if (ft_str_is_numeric(search))
+		get_next_line(0, &search);
+		if (word_count(search) == 1 && strdigitwhitespace(search))
 			line_search(book, ft_atoi(search));
 		else
 		{
@@ -70,7 +83,7 @@ void	options(t_line **book, char *name)
 			//ACTION
 		}		
 	}
-	else if (parameter == 'Q')
+	else if (parameter == 4)
 	{
 		free_book(book);
 		ft_putstr_colour(BLUE, "THANK YOU FOR USING TELESCOPE©\n");
