@@ -14,6 +14,7 @@ typedef struct	line
 
 void			add_line(t_line **head, char *text, int num);
 void			options(t_line **book);
+void			free_book(t_line **book);
 
 
 //emoji for pushing: 💡

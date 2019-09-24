@@ -1,9 +1,19 @@
 #include "../includes/telescope.h"
 
-// void	options(t_line **book)
-// {
+void	debug_print(t_line **head)
+{
+	t_line	*temp;
 
-// }
+	temp = *head;
+	while (temp != NULL)
+	{
+		ft_putnbr(temp->page_no);
+		ft_putstr(": ");
+		ft_putstr(temp->text);
+		ft_putchar('\n');
+		temp = temp->next;
+	}
+}
 
 int		main(int argc, char **argv)
 {
@@ -37,7 +47,8 @@ int		main(int argc, char **argv)
 		}
 	}
 	close(fd);
-	//options(&head);
-	//free_book(&head);
+	debug_print(&head);	//
+	options(&head);
+	free_book(&head);
 	return (0);
 }
