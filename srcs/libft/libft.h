@@ -6,7 +6,7 @@
 /*   By: jhansen <jhansen@student.wethinkcode.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/04 15:09:10 by jhansen           #+#    #+#             */
-/*   Updated: 2019/09/22 15:53:42 by jhansen          ###   ########.fr       */
+/*   Updated: 2019/09/24 23:15:11 by jhansen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # define RED "\033[31m"
 # define YELLOW "\033[33m"
 # define CYAN "\033[36m"
+# define BOLD_YELLOW "\033[01;33m"
 # define BUFF_SIZE 100
 
 # include <string.h>

@@ -31,3 +31,21 @@ void	print_param(t_line **book, char *name)
 		ft_putstr("(1) : Search for a specific word\n(2) : Search for specific phrase\n(3) : Search by line number\n(4) : Quit program\n\n");
 	}
 }
+
+void	line_printing(char *text, int page, int line)
+{
+	if (page < line || page > line)
+	{
+		ft_putnbr(page);
+		ft_putstr(": ");
+		ft_putstr(text);
+		ft_putchar('\n');
+	}
+	else
+	{
+		ft_putstr_colour(BOLD_YELLOW, ft_itoa(page));
+		ft_putstr_colour(BOLD_YELLOW, ": ");
+		ft_putstr_colour(BOLD_YELLOW, text);
+		ft_putchar('\n');
+	}
+}

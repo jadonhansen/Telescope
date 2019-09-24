@@ -22,6 +22,7 @@ void			phrase_search(t_line	**book, char *search);
 void			word_search(t_line	**book, char *search);
 void			line_search(t_line	**book, int line);
 int				word_count(char *word);
+void			line_printing(char *text, int page, int line);
 
 //emoji for pushing: 💡
 

@@ -90,7 +90,7 @@ void	options(t_line **book, char *name)
 	}
 	else
 	{
-		ft_putstr_colour(RED, "You have not entered valid option! Please try again.\n");
+		ft_putstr_colour(RED, "You have not entered a valid option! Please try again.\n");
 		//ACTION
 	}
 }
