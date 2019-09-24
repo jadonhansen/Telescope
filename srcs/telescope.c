@@ -47,8 +47,8 @@ int		main(int argc, char **argv)
 		}
 	}
 	close(fd);
-	debug_print(&head);	//
-	options(&head);
+	//debug_print(&head);
+	options(&head, argv[1]);
 	free_book(&head);
 	return (0);
 }

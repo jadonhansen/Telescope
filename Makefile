@@ -1,7 +1,8 @@
 HM = Telescope
 LIB = libft
 FLAGS = -Wall -Werror -Wextra
-SRCS = ./srcs/Telescope.c ./srcs/struct_handling.c ./srcs/options.c
+SRCS = ./srcs/Telescope.c ./srcs/struct_handling.c ./srcs/options.c ./srcs/printing.c
+SRCS += ./srcs/searches.c
 OPTIONS = -I./srcs/libft -lft -L./srcs/libft
 
 all: $(LIB) $(HM)
@@ -9,7 +10,7 @@ all: $(LIB) $(HM)
 $(LIB): relib cleanlib
 
 $(HM):
-	@gcc -o $(HM) $(FLAGS) $(OPTIONS) $(SRCS)
+	@gcc -o $(HM) $(OPTIONS) $(SRCS)
 	@echo "Compiled!"
 
 clean:
