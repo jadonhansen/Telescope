@@ -25,7 +25,7 @@ void			line_search(t_line	**book, int line);
 void			print_header();
 void			print_param(t_line **book, char *name);
 void			line_printing(char *text, int page, int line, int flag);
-void			clear_print(t_line **book, char *name, char *error, int flag);
+void			clear_print(t_line **book, char *name, char *str, int flag);
 
 //emoji for pushing: 💡
 

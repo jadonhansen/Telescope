@@ -48,7 +48,7 @@ void	options(t_line **book, char *name)
 	scanf("%d", &parameter);
 	if (parameter == 1)
 	{
-		ft_putstr_colour(CYAN, "Please enter your search word below and press ENTER:\n");
+		clear_print(book, name, "Please enter your search word below and press ENTER:\n", 2);
 		get_next_line(0, &search);
 		if (word_count(search) == 1)
 			word_search(book, search);
@@ -60,7 +60,7 @@ void	options(t_line **book, char *name)
 	}
 	else if (parameter == 2)
 	{
-		ft_putstr_colour(CYAN, "Please enter your search phrase below and press ENTER:\n");
+		clear_print(book, name, "Please enter your search phrase below and press ENTER:\n", 2);
 		get_next_line(0, &search);
 		if (word_count(search) > 1)
 			phrase_search(book, search);
@@ -72,7 +72,7 @@ void	options(t_line **book, char *name)
 	}
 	else if (parameter == 3)
 	{
-		ft_putstr_colour(CYAN, "Please enter your line number below and press ENTER:\n");
+		clear_print(book, name, "Please enter your line number below and press ENTER:\n", 2);
 		get_next_line(0, &search);
 		if (word_count(search) == 1 && strdigitwhitespace(search))
 			line_search(book, ft_atoi(search));

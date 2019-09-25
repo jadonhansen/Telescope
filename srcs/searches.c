@@ -36,6 +36,7 @@ void	line_search(t_line	**book, int line)
 			return ;
 		}
 	}
+	clear_print(NULL, NULL, NULL, 0);
 	ft_putstr_colour(RED, "ERROR: We could not find the line you were looking for!\n");
 }
 

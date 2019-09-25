@@ -60,7 +60,7 @@ void	line_printing(char *text, int page, int line, int flag)
 	}
 }
 
-void	clear_print(t_line **book, char *name, char *error, int flag)
+void	clear_print(t_line **book, char *name, char *str, int flag)
 {
 	if (flag == 0)
 	{
@@ -73,11 +73,19 @@ void	clear_print(t_line **book, char *name, char *error, int flag)
 		print_header();
 		print_param(book, name);
 	}
-	if (flag == 3)
+	if (flag == 2)
 	{
 		ft_putstr("\e[1;1H\e[2J");
 		print_header();
 		print_param(book, name);
-		ft_putstr_colour(RED, error);
+		ft_putstr_colour(CYAN, str);
+	}
+	if (flag == 3)
+	{
+		ft_putstr("\e[1;1H\e[2J");
+		print_header();
+		ft_putstr_colour(RED, str);
+		ft_putchar('\n');
+		print_param(book, name);
 	}
 }
