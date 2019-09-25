@@ -44,7 +44,7 @@ void	options(t_line **book, char *name)
 	char	*search;
 
 	clear_print(book, name, NULL, 1);
-	//ACTION
+	ACTION:
 	scanf("%d", &parameter);
 	if (parameter == 1)
 	{
@@ -55,7 +55,7 @@ void	options(t_line **book, char *name)
 		else
 		{
 			clear_print(book, name, "You are searching for more than one word but have chosen the 'Search for a specific word' option! Please try again.\n", 3);
-			//ACTION
+			goto ACTION;
 		}
 	}
 	else if (parameter == 2)
@@ -67,7 +67,7 @@ void	options(t_line **book, char *name)
 		else
 		{
 			clear_print(book, name, "Your input did not constitute to a phrase. Make sure you are typing in more than one word! Please try again.\n", 3);
-			//ACTION
+			goto ACTION;
 		}		
 	}
 	else if (parameter == 3)
@@ -78,8 +78,8 @@ void	options(t_line **book, char *name)
 			line_search(book, ft_atoi(search));
 		else
 		{
-			clear_print(book, name, "Your input did not constitute to a line number. Make sure you are typing in a valid linenumber! Please try again.\n", 3);
-			//ACTION
+			clear_print(book, name, "Your input did not constitute to a line number. Make sure you are typing in a valid line number! Please try again.\n", 3);
+			goto ACTION;
 		}		
 	}
 	else if (parameter == 4)
@@ -91,6 +91,6 @@ void	options(t_line **book, char *name)
 	else
 	{
 		clear_print(book, name, "You have not entered a valid option! Please try again.\n", 2);
-		//ACTION
+		goto ACTION;
 	}
 }
