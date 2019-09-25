@@ -32,20 +32,52 @@ void	print_param(t_line **book, char *name)
 	}
 }
 
-void	line_printing(char *text, int page, int line)
+void	line_printing(char *text, int page, int line, int flag)
 {
-	if (page < line || page > line)
+	if (flag == 0)
 	{
-		ft_putnbr(page);
-		ft_putstr(": ");
-		ft_putstr(text);
-		ft_putchar('\n');
+		clear_print(NULL, NULL, NULL, 0);
+		ft_putstr_colour(CYAN, "RESULTS OF THE SEARCH FOR LINE ");
+		ft_putstr_colour(CYAN, ft_itoa(line));
+		ft_putstr_colour(CYAN, ":\n\n");
 	}
-	else
+	if (flag == 1)
 	{
-		ft_putstr_colour(BOLD_YELLOW, ft_itoa(page));
-		ft_putstr_colour(BOLD_YELLOW, ": ");
-		ft_putstr_colour(BOLD_YELLOW, text);
-		ft_putchar('\n');
+		if (page < line || page > line)
+		{
+			ft_putnbr(page);
+			ft_putstr(": ");
+			ft_putstr(text);
+			ft_putchar('\n');
+		}
+		else
+		{
+			ft_putstr_colour(BOLD_YELLOW, ft_itoa(page));
+			ft_putstr_colour(BOLD_YELLOW, ": ");
+			ft_putstr_colour(BOLD_YELLOW, text);
+			ft_putchar('\n');
+		}
+	}
+}
+
+void	clear_print(t_line **book, char *name, char *error, int flag)
+{
+	if (flag == 0)
+	{
+		ft_putstr("\e[1;1H\e[2J");
+		print_header();
+	}
+	if (flag == 1)
+	{
+		ft_putstr("\e[1;1H\e[2J");
+		print_header();
+		print_param(book, name);
+	}
+	if (flag == 3)
+	{
+		ft_putstr("\e[1;1H\e[2J");
+		print_header();
+		print_param(book, name);
+		ft_putstr_colour(RED, error);
 	}
 }

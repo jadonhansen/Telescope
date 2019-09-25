@@ -25,10 +25,11 @@ void	line_search(t_line	**book, int line)
 		ft_putchar('\n');
 		if (line_exists(book, line))
 		{
+			line_printing(NULL, 0, line, 0);
 			while (temp != NULL && count <= line + 1)
 			{
 				if ((temp->page_no == line) || (temp->page_no == line - 1) || (temp->page_no == line + 1))
-					line_printing(temp->text, temp->page_no, line);
+					line_printing(temp->text, temp->page_no, line, 1);
 				temp = temp->next;
 				count++;
 			}

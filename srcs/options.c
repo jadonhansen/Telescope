@@ -43,8 +43,7 @@ void	options(t_line **book, char *name)
 	int		parameter = 0;
 	char	*search;
 
-	print_header();
-	print_param(book, name);
+	clear_print(book, name, NULL, 1);
 	//ACTION
 	scanf("%d", &parameter);
 	if (parameter == 1)
@@ -55,7 +54,7 @@ void	options(t_line **book, char *name)
 			word_search(book, search);
 		else
 		{
-			ft_putstr_colour(RED, "You are searching for more than one word but have chosen the 'Search for a specific word' option! Please try again.\n");
+			clear_print(book, name, "You are searching for more than one word but have chosen the 'Search for a specific word' option! Please try again.\n", 3);
 			//ACTION
 		}
 	}
@@ -67,7 +66,7 @@ void	options(t_line **book, char *name)
 			phrase_search(book, search);
 		else
 		{
-			ft_putstr_colour(RED, "Your input did not constitute to a phrase. Make sure you are typing in more than one word! Please try again.\n");
+			clear_print(book, name, "Your input did not constitute to a phrase. Make sure you are typing in more than one word! Please try again.\n", 3);
 			//ACTION
 		}		
 	}
@@ -79,18 +78,19 @@ void	options(t_line **book, char *name)
 			line_search(book, ft_atoi(search));
 		else
 		{
-			ft_putstr_colour(RED, "Your input did not constitute to a line number. Make sure you are typing in a valid linenumber! Please try again.\n");
+			clear_print(book, name, "Your input did not constitute to a line number. Make sure you are typing in a valid linenumber! Please try again.\n", 3);
 			//ACTION
 		}		
 	}
 	else if (parameter == 4)
 	{
 		free_book(book);
+		clear_print(book, name, NULL, 1);
 		ft_putstr_colour(BLUE, "THANK YOU FOR USING TELESCOPE©\n");
 	}
 	else
 	{
-		ft_putstr_colour(RED, "You have not entered a valid option! Please try again.\n");
+		clear_print(book, name, "You have not entered a valid option! Please try again.\n", 2);
 		//ACTION
 	}
 }
