@@ -18,14 +18,17 @@ void			options(t_line **book, char *name);
 void			free_book(t_line **book);
 int				word_count(char *word);
 
-void			phrase_search(t_line	**book, char *search);
-void			word_search(t_line	**book, char *search);
+void			phrase_search(t_line **book, char *name, char *search);
+void			word_search(t_line	**book, char *name, char *search);
 void			line_search(t_line	**book, int line);
 
 void			print_header();
-void			print_param(t_line **book, char *name);
+void			print_param();
+void			print_details(t_line **book, char *name);
 void			line_printing(char *text, int page, int line, int flag);
 void			clear_print(t_line **book, char *name, char *str, int flag);
+void			word_printing(char *text, char *word, int flag);
+void			phrase_printing(char *text, char *phrase, int flag);
 
 //emoji for pushing: 💡
 

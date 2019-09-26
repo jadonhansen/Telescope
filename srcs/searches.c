@@ -40,14 +40,42 @@ void	line_search(t_line	**book, int line)
 	ft_putstr_colour(RED, "ERROR: We could not find the line you were looking for!\n");
 }
 
-void	word_search(t_line	**book, char *search)
+void	word_search(t_line	**book, char *name, char *search)
 {
-	//options for every instance or first or last instance
-	return ;
+	int	parameter = 0;
+	char *ans = NULL;
+
+	clear_print(book, name, NULL, 1);
+	WORD:
+	word_printing(search, NULL, 0);
+	get_next_line(0, &ans);
+	if (ft_atoi(ans) == 1 || ft_atoi(ans) == 2 || ft_atoi(ans) == 3)
+	{
+		ft_putstr(ans);
+	}
+	else
+	{
+		clear_print(book, name, "Please enter a valid option!\n\n", 4);
+		goto WORD;
+	}
 }
 
-void	phrase_search(t_line	**book, char *search)
+void	phrase_search(t_line **book, char *name, char *search)
 {
-	//options for every instance or first or last instance
-	return ;
+	int	parameter = 0;
+	char *ans = NULL;
+
+	clear_print(book, name, NULL, 1);
+	PHRASE:
+	phrase_printing(search, NULL, 0);
+	get_next_line(0, &ans);
+	if (ft_atoi(ans) == 1 || ft_atoi(ans) == 2 || ft_atoi(ans) == 3)
+	{
+		ft_putstr(ans);
+	}
+	else
+	{
+		clear_print(book, name, "Please enter a valid option!\n\n", 4);
+		goto PHRASE;
+	}
 }

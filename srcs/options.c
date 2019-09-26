@@ -40,37 +40,37 @@ int		strdigitwhitespace(char *line)
 
 void	options(t_line **book, char *name)
 {
-	int		parameter = 0;
+	char	*param = NULL;
 	char	*search;
 
 	clear_print(book, name, NULL, 1);
 	ACTION:
-	scanf("%d", &parameter);
-	if (parameter == 1)
+	get_next_line(0, &param);
+	if (ft_atoi(param) == 1)
 	{
 		clear_print(book, name, "Please enter your search word below and press ENTER:\n", 2);
 		get_next_line(0, &search);
 		if (word_count(search) == 1)
-			word_search(book, search);
+			word_search(book, name, search);
 		else
 		{
 			clear_print(book, name, "You are searching for more than one word but have chosen the 'Search for a specific word' option! Please try again.\n", 3);
 			goto ACTION;
 		}
 	}
-	else if (parameter == 2)
+	else if (ft_atoi(param) == 2)
 	{
 		clear_print(book, name, "Please enter your search phrase below and press ENTER:\n", 2);
 		get_next_line(0, &search);
 		if (word_count(search) > 1)
-			phrase_search(book, search);
+			phrase_search(book, name, search);
 		else
 		{
 			clear_print(book, name, "Your input did not constitute to a phrase. Make sure you are typing in more than one word! Please try again.\n", 3);
 			goto ACTION;
 		}		
 	}
-	else if (parameter == 3)
+	else if (ft_atoi(param) == 3)
 	{
 		clear_print(book, name, "Please enter your line number below and press ENTER:\n", 2);
 		get_next_line(0, &search);
@@ -82,15 +82,11 @@ void	options(t_line **book, char *name)
 			goto ACTION;
 		}		
 	}
-	else if (parameter == 4)
-	{
-		free_book(book);
-		clear_print(book, name, NULL, 1);
-		ft_putstr_colour(BLUE, "THANK YOU FOR USING TELESCOPE©\n");
-	}
+	else if (ft_atoi(param) == 4)
+		clear_print(book, name, NULL, 0);
 	else
 	{
-		clear_print(book, name, "You have not entered a valid option! Please try again.\n", 2);
+		clear_print(book, name, "You have not entered a valid option! Please try again.\n", 4);
 		goto ACTION;
 	}
 }

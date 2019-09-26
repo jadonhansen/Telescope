@@ -13,7 +13,7 @@ void	print_header()
 	ft_putstr_colour(GREEN, "============================================\n\n");
 }
 
-void	print_param(t_line **book, char *name)
+void	print_details(t_line **book, char *name)
 {
 	t_line	*temp;
 
@@ -27,9 +27,23 @@ void	print_param(t_line **book, char *name)
 		while (temp->next != NULL)
 			temp = temp->next;
 		ft_putnbr(temp->page_no);
-		ft_putstr_colour(CYAN, "\n\n\nHow would you like to search your document? Enter your chosen option and press ENTER\n");
-		ft_putstr("(1) : Search for a specific word\n(2) : Search for specific phrase\n(3) : Search by line number\n(4) : Quit program\n\n");
+		ft_putstr("\n\n");
 	}
+	else
+	{
+		clear_print(NULL, NULL, NULL, 0);
+		ft_putstr_colour(RED, "ERROR: \"");
+		ft_putstr_colour(RED, name);
+		ft_putstr_colour(RED, "\" NOT FOUND!\n");
+		free_book(book);
+		exit (1);
+	}
+}
+
+void	print_param()
+{
+	ft_putstr_colour(CYAN, "\nHow would you like to search your document? Enter your chosen option and press ENTER\n");
+	ft_putstr("(1) : Search for a specific word\n(2) : Search for specific phrase\n(3) : Search by line number\n(4) : Quit program\n\n");
 }
 
 void	line_printing(char *text, int page, int line, int flag)
@@ -60,32 +74,62 @@ void	line_printing(char *text, int page, int line, int flag)
 	}
 }
 
+void	word_printing(char *text, char *word, int flag)
+{
+	if (flag == 0)
+	{
+		ft_putstr_colour(CYAN, "WORD SEARCH:\nSelect a more detailed search option:\n");
+		ft_putstr("(1) : Search for every instance\n(2) : The first instance\n(3) : The last instance\n\n");
+	}
+}
+
+void	phrase_printing(char *text, char *phrase, int flag)
+{
+	if (flag == 0)
+	{
+		ft_putstr_colour(CYAN, "PHRASE SEARCH:\nSelect a more detailed search option:\n");
+		ft_putstr("(1) : Search for every instance\n(2) : The first instance\n(3) : The last instance\n\n");
+	}
+}
+
 void	clear_print(t_line **book, char *name, char *str, int flag)
 {
 	if (flag == 0)
 	{
-		ft_putstr("\e[1;1H\e[2J");
+		free_book(book);
+		ft_putstr("\e[1;1H\e[2J");	//for exiting
 		print_header();
+		ft_putstr_colour(BLUE, "THANK YOU FOR USING TELESCOPE©\n");
 	}
 	if (flag == 1)
 	{
-		ft_putstr("\e[1;1H\e[2J");
+		ft_putstr("\e[1;1H\e[2J");	//for main search options (entering in 1, 2 or 3)
 		print_header();
-		print_param(book, name);
+		print_details(book, name);
+		print_param();
 	}
 	if (flag == 2)
 	{
-		ft_putstr("\e[1;1H\e[2J");
+		ft_putstr("\e[1;1H\e[2J");	//for entering in input (either a phrase, word or number)
 		print_header();
-		print_param(book, name);
+		print_details(book, name);
+		print_param();
 		ft_putstr_colour(CYAN, str);
 	}
 	if (flag == 3)
 	{
-		ft_putstr("\e[1;1H\e[2J");
+		ft_putstr("\e[1;1H\e[2J");	//for error of input of phrase, word or number
 		print_header();
+		print_details(book, name);
 		ft_putstr_colour(RED, str);
-		ft_putchar('\n');
-		print_param(book, name);
+		print_param();
+	}
+	if (flag == 4)
+	{
+		ft_putstr("\e[1;1H\e[2J");	//for error of further input options for word or phrase search
+		print_header();
+		print_details(book, name);
+		print_param();
+		ft_putstr_colour(RED, str);
 	}
 }
