@@ -17,7 +17,7 @@ void	every_inst_ph(t_line **book, char *name, char *search)
 			}
 			temp = temp->next;
 		}
-		if (found == 2)
+		if (found == 1)
 			return ;
 	}
 	else

@@ -7,19 +7,16 @@ int		find(char *line, char *search)
 
 	if (line && search)
 	{
-		while (line[i]!= '\0')
+		while (line[i] != '\0')
 		{
 			j = 0;
-			while (line[i] != '\0' && search[j] != '\0' && line[i] == search[i])
+			while (line[i] != '\0' && search[j] != '\0' && line[i] == search[j])
 			{
 				i++;
 				j++;
 			}
 			if (search[j] == '\0')
-			{
-				write(1, "found word\n", 11);
 				return (1);
-			}
 			i++;
 		}
 	}

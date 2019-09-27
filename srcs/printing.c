@@ -103,6 +103,7 @@ void	word_printing(t_line **book, char *text, int line, char *word, int flag)
 		ft_putstr_colour(YELLOW, ft_itoa(line));		//needs more work
 		ft_putstr_colour(YELLOW, " : ");
 		ft_putstr_colour(YELLOW, text);
+		ft_putchar('\n');
 	}
 	if (flag == 3)
 	{
@@ -133,6 +134,7 @@ void	phrase_printing(t_line **book, char *text, int line, char *phrase, int flag
 		ft_putstr_colour(YELLOW, ft_itoa(line));		//needs more work
 		ft_putstr_colour(YELLOW, " : ");
 		ft_putstr_colour(YELLOW, text);
+		ft_putchar('\n');
 	}
 	if (flag == 3)
 	{
