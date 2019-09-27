@@ -16,7 +16,10 @@ int		find(char *line, char *search)
 				j++;
 			}
 			if (search[j] == '\0')
+			{
+				write(1, "found word\n", 11);
 				return (1);
+			}
 			i++;
 		}
 	}

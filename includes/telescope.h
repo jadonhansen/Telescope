@@ -37,8 +37,8 @@ void			print_param();
 void			print_details(t_line **book, char *name);
 void			line_printing(char *text, int page, int line);
 void			clear_print(t_line **book, char *name, char *str, int flag); //under construction
-void			word_printing(t_line **book, char *text, char *word, int flag);
-void			phrase_printing(t_line **book, char *text, char *phrase, int flag);
+void			word_printing(t_line **book, char *text, int line, char *word, int flag);
+void			phrase_printing(t_line **book, char *text, int line, char *phrase, int flag);
 
 //emoji for pushing: 💡
 

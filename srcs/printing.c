@@ -82,7 +82,7 @@ void	line_printing(char *text, int page, int line)
 	}
 }
 
-void	word_printing(t_line **book, char *text, char *word, int flag)
+void	word_printing(t_line **book, char *text, int line, char *word, int flag)
 {
 	if (flag == 0)
 	{
@@ -100,9 +100,9 @@ void	word_printing(t_line **book, char *text, char *word, int flag)
 	}
 	if (flag == 2)
 	{
-		ft_putstr_colour(YELLOW, ft_itoa((*book)->page_no));		//needs more work
+		ft_putstr_colour(YELLOW, ft_itoa(line));		//needs more work
 		ft_putstr_colour(YELLOW, " : ");
-		ft_putstr_colour(YELLOW, (*book)->text);
+		ft_putstr_colour(YELLOW, text);
 	}
 	if (flag == 3)
 	{
@@ -112,7 +112,7 @@ void	word_printing(t_line **book, char *text, char *word, int flag)
 	}
 }
 
-void	phrase_printing(t_line **book, char *text, char *phrase, int flag)
+void	phrase_printing(t_line **book, char *text, int line, char *phrase, int flag)
 {
 	if (flag == 0)
 	{
@@ -130,9 +130,9 @@ void	phrase_printing(t_line **book, char *text, char *phrase, int flag)
 	}
 	if (flag == 2)
 	{
-		ft_putstr_colour(YELLOW, ft_itoa((*book)->page_no));		//needs more work
+		ft_putstr_colour(YELLOW, ft_itoa(line));		//needs more work
 		ft_putstr_colour(YELLOW, " : ");
-		ft_putstr_colour(YELLOW, (*book)->text);
+		ft_putstr_colour(YELLOW, text);
 	}
 	if (flag == 3)
 	{

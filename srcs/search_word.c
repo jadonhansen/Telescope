@@ -7,13 +7,13 @@ void	every_inst_wrd(t_line **book, char *name, char *search)
 
 	if (temp)
 	{
-		word_printing(book, name, search, 1);
+		word_printing(book, name, 0, search, 1);
 		while (temp != NULL)
 		{
 			if (find(temp->text, search))
 			{
 				found = 1;
-				word_printing(&temp, NULL, search, 2);
+				word_printing(NULL, temp->text, temp->page_no, search, 2);
 			}
 			temp = temp->next;
 		}
@@ -22,7 +22,7 @@ void	every_inst_wrd(t_line **book, char *name, char *search)
 	}
 	else
 		clear_print(book, name, "ACCESS ERROR\n", 3);
-	word_printing(NULL, NULL, search, 3);
+	word_printing(NULL, NULL, 0, search, 3);
 }
 
 void	first_inst_wrd(t_line **book, char *name, char *search)
@@ -31,12 +31,12 @@ void	first_inst_wrd(t_line **book, char *name, char *search)
 
 	if (temp)
 	{
-		word_printing(book, name, search, 1);
+		word_printing(book, name, 0, search, 1);
 		while (temp != NULL)
 		{
 			if (find(temp->text, search))
 			{
-				word_printing(&temp, NULL, search, 2);
+				word_printing(NULL, temp->text, temp->page_no, search, 2);
 				return ;
 			}
 			temp = temp->next;
@@ -44,7 +44,7 @@ void	first_inst_wrd(t_line **book, char *name, char *search)
 	}
 	else
 		clear_print(book, name, "ACCESS ERROR\n", 3);
-	word_printing(NULL, NULL, search, 3);
+	word_printing(NULL, NULL, 0, search, 3);
 }
 
 void	last_inst_wrd(t_line **book, char *name, char *search)
