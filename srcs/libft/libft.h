@@ -6,7 +6,7 @@
 /*   By: jhansen <jhansen@student.wethinkcode.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/04 15:09:10 by jhansen           #+#    #+#             */
-/*   Updated: 2019/09/24 23:15:11 by jhansen          ###   ########.fr       */
+/*   Updated: 2019/09/27 22:55:05 by jhansen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,6 +134,7 @@ char				*ft_strndup(const char *s1, size_t n);
 int					ft_str_is_numeric(const char *str);
 int					ft_intlen(int n);
 void				ft_putstr_colour(char *colour, char *s);
+void				ft_putchar_colour(char *colour, char c);
 long				ft_atol(char *s);
 void				ft_array_free(char **arr);
 

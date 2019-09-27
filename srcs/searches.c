@@ -19,7 +19,7 @@ int	word_search(t_line	**book, char *name, char *search)
 	print_header();
 	print_details(book, name);
 	WORD:
-	word_printing(NULL, search, 0, NULL, 0);
+	word_printing(NULL, NULL, NULL, 0);
 	get_next_line(0, &ans);
 	if (ft_atoi(ans) == 1)
 		every_inst_wrd(book, name, search);
@@ -57,7 +57,7 @@ int	phrase_search(t_line **book, char *name, char *search)
 	print_header();
 	print_details(book, name);
 	PHRASE:
-	phrase_printing(NULL, search, 0, NULL, 0);
+	phrase_printing(NULL, NULL, NULL, 0);
 	get_next_line(0, &ans);
 	if (ft_atoi(ans) == 1)
 		every_inst_ph(book, name, search);
