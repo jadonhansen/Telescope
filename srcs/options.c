@@ -33,10 +33,14 @@ void	options(t_line **book, char *name)
 			goto LINE_ERR;
 	}
 	else if (ft_atoi(param) == 4)
+	{
+		free(param);
 		exit_print(book);
+	}
 	else
 	{
 		clear_print(book, name, "You have not entered a valid option! Please try again.\n", 2);
 		goto ACTION;
 	}
+	free(search);
 }

@@ -14,6 +14,7 @@ typedef struct	line
 }				t_line;
 
 void			add_line(t_line **head, char *text, int num);
+int				check_content(t_line **book, char *name);
 void			options(t_line **book, char *name);
 void			free_book(t_line **book);
 int				word_count(char *word);

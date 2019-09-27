@@ -9,13 +9,15 @@ int		main(int argc, char **argv)
 
 	if (argc != 2)
 	{
-		ft_putstr_colour(RED, "Nothing has been given as input!\n");
+		ft_putstr_colour(RED, "Oops! Please run with a filename.\n");
 		return (0);
 	}
 	fd = open(argv[1], O_RDONLY);
 	if (fd < 2)
 	{
-		ft_putstr_colour(RED, "Could not find the suggested input!\n");
+		ft_putstr_colour(RED, "Oops! The file '");
+		ft_putstr_colour(RED, argv[1]);
+		ft_putstr_colour(RED, "' could not be found.\n");
 		return (0);
 	}
 	while (get_next_line(fd, &line) > 0)
@@ -27,12 +29,14 @@ int		main(int argc, char **argv)
 		}
 		else
 		{
-			ft_putstr_colour(RED, "No content found!\n");
+			ft_putstr_colour(RED, "Oops! Something went wrong.");
 			return (0);
 		}
 	}
 	close(fd);
-	options(&head, argv[1]);
-	free_book(&head);
+	if (check_content(&head, argv[1]))		//not working
+		options(&head, argv[1]);
+	if (head != NULL)
+		free_book(&head);
 	return (0);
 }

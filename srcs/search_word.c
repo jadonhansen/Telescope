@@ -49,5 +49,25 @@ void	first_inst_wrd(t_line **book, char *name, char *search)
 
 void	last_inst_wrd(t_line **book, char *name, char *search)
 {
-	return ;
+	t_line	*temp = *book;
+	t_line	*save = NULL;
+
+	if (temp)
+	{
+		word_printing(book, name, search, 1);
+		while (temp != NULL)
+		{
+			if (find(temp->text, search))
+				save = temp;
+			temp = temp->next;
+		}
+		if (save != NULL)
+		{
+			highlight_output(save->text, save->page_no, search);
+			return ;
+		}
+	}
+	else
+		clear_print(book, name, "ACCESS ERROR\n", 3);
+	word_printing(NULL, NULL, search, 2);
 }

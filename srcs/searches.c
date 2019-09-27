@@ -35,6 +35,7 @@ int	word_search(t_line	**book, char *name, char *search)
 		ft_putstr_colour(RED, "Please enter a valid option!\n\n");
 		goto WORD;
 	}
+	free(ans);
 	return (1);
 }
 
@@ -73,6 +74,7 @@ int	phrase_search(t_line **book, char *name, char *search)
 		ft_putstr_colour(RED, "Please enter a valid option!\n\n");
 		goto PHRASE;
 	}
+	free(ans);
 	return (1);
 }
 
