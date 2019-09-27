@@ -1,5 +1,28 @@
 #include "../includes/telescope.h"
 
+int		find(char *line, char *search)
+{
+	int	i = 0;
+	int	j;
+
+	if (line && search)
+	{
+		while (line[i]!= '\0')
+		{
+			j = 0;
+			while (line[i] != '\0' && search[j] != '\0' && line[i] == search[i])
+			{
+				i++;
+				j++;
+			}
+			if (search[j] == '\0')
+				return (1);
+			i++;
+		}
+	}
+	return (0);
+}
+
 int		word_count(char *word)
 {
 	int i = 0;
@@ -46,9 +69,10 @@ int		line_exists(t_line **book, int line)
 	{
 		while (temp->next != NULL)
 			temp = temp->next;
+		if (temp->page_no >= line && line >= 1)
+			return (1);
+		else
+			return (0);		
 	}
-	if (temp->page_no >= line && line >= 1)
-		return (1);
-	else
-		return (0);
+	return (0);
 }

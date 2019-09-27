@@ -7,7 +7,7 @@ int	word_search(t_line	**book, char *name, char *search)
 
 	if (word_count(search) != 1)
 	{
-		ft_putstr("\e[1;1H\e[2J");
+		ft_putstr("\e[1;1H\e[2J");	//
 		print_header();
 		print_details(book, name);
 		print_param();
@@ -15,19 +15,21 @@ int	word_search(t_line	**book, char *name, char *search)
 		ft_putstr_colour(CYAN, "Please enter your search word below and press ENTER:\n");
 		return (0);
 	}
-	ft_putstr("\e[1;1H\e[2J");
+	ft_putstr("\e[1;1H\e[2J");	//
 	print_header();
 	print_details(book, name);
 	WORD:
-	word_printing(search, NULL, 0);
+	word_printing(NULL, search, NULL, 0);
 	get_next_line(0, &ans);
-	if (ft_atoi(ans) == 1 || ft_atoi(ans) == 2 || ft_atoi(ans) == 3)
-	{
-		ft_putstr(ans);
-	}
+	if (ft_atoi(ans) == 1)
+		every_inst_wrd(book, name, search);
+	else if (ft_atoi(ans) == 2)
+		first_inst_wrd(book, name, search);
+	else if (ft_atoi(ans) == 3)
+		last_inst_wrd(book, name, search);
 	else
 	{
-		ft_putstr("\e[1;1H\e[2J");
+		ft_putstr("\e[1;1H\e[2J");	//
 		print_header();
 		print_details(book, name);
 		ft_putstr_colour(RED, "Please enter a valid option!\n\n");
@@ -43,7 +45,7 @@ int	phrase_search(t_line **book, char *name, char *search)
 
 	if (word_count(search) < 2)
 	{
-		ft_putstr("\e[1;1H\e[2J");
+		ft_putstr("\e[1;1H\e[2J");		//
 		print_header();
 		print_details(book, name);
 		print_param();
@@ -51,19 +53,21 @@ int	phrase_search(t_line **book, char *name, char *search)
 		ft_putstr_colour(CYAN, "Please enter your search phrase below and press ENTER:\n");
 		return (0);
 	}
-	ft_putstr("\e[1;1H\e[2J");
+	ft_putstr("\e[1;1H\e[2J");		//
 	print_header();
 	print_details(book, name);
 	PHRASE:
-	phrase_printing(search, NULL, 0);
+	phrase_printing(NULL, search, NULL, 0);
 	get_next_line(0, &ans);
-	if (ft_atoi(ans) == 1 || ft_atoi(ans) == 2 || ft_atoi(ans) == 3)
-	{
-		ft_putstr(ans);
-	}
+	if (ft_atoi(ans) == 1)
+		every_inst_ph(book, name, search);
+	else if (ft_atoi(ans) == 2)
+		first_inst_ph(book, name, search);
+	else if (ft_atoi(ans) == 3)
+		last_inst_ph(book, name, search);
 	else
 	{
-		ft_putstr("\e[1;1H\e[2J");
+		ft_putstr("\e[1;1H\e[2J");		//
 		print_header();
 		print_details(book, name);
 		ft_putstr_colour(RED, "Please enter a valid option!\n\n");
@@ -80,7 +84,7 @@ int	line_search(t_line	**book, char *name, char *search)
 
 	if (word_count(search) != 1 || !(strdigitwhitespace(search)))
 	{
-		ft_putstr("\e[1;1H\e[2J");
+		ft_putstr("\e[1;1H\e[2J");	//
 		print_header();
 		print_details(book, name);
 		print_param();
@@ -93,7 +97,7 @@ int	line_search(t_line	**book, char *name, char *search)
 		ft_putchar('\n');
 		if (line_exists(book, line))
 		{
-			ft_putstr("\e[1;1H\e[2J");
+			ft_putstr("\e[1;1H\e[2J");	//
 			print_header();
 			print_details(book, name);
 			ft_putstr_colour(CYAN, "RESULTS OF THE SEARCH FOR LINE ");
@@ -108,7 +112,9 @@ int	line_search(t_line	**book, char *name, char *search)
 			}
 			return (1);
 		}
+		line_printing(NULL, 0, line);
 	}
-	clear_print(book, name, "ERROR: We could not find the line you were looking for!\n", 3);
+	else
+		clear_print(book, name, "ACCESS ERROR\n", 3);
 	return (1);
 }

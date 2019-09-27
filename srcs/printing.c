@@ -55,7 +55,18 @@ void	exit_print(t_line **book)
 
 void	line_printing(char *text, int page, int line)
 {
-	if (page < line || page > line)
+	if (page == 0 && text == NULL)
+	{
+		ft_putstr("\e[1;1H\e[2J");
+		print_header();
+		ft_putstr_colour(CYAN, "RESULTS OF THE SEARCH FOR LINE ");
+		ft_putstr_colour(CYAN, ft_itoa(line));
+		ft_putstr_colour(CYAN, ":\n\n");
+		ft_putstr_colour(YELLOW, "Sorry, we could not find line '");
+		ft_putstr_colour(YELLOW, ft_itoa(line));
+		ft_putstr_colour(YELLOW, "'.\n");
+	}
+	else if (page < line || page > line)
 	{
 		ft_putnbr(page);
 		ft_putstr(": ");
@@ -71,21 +82,63 @@ void	line_printing(char *text, int page, int line)
 	}
 }
 
-void	word_printing(char *text, char *word, int flag)
+void	word_printing(t_line **book, char *text, char *word, int flag)
 {
 	if (flag == 0)
 	{
 		ft_putstr_colour(CYAN, "WORD SEARCH:\nSelect a more detailed search option:\n");
 		ft_putstr("(1) : Search for every instance\n(2) : The first instance\n(3) : The last instance\n\n");
 	}
+	if (flag == 1)
+	{
+		ft_putstr("\e[1;1H\e[2J");
+		print_header();
+		print_details(book, text);
+		ft_putstr_colour(CYAN, "RESULTS OF THE SEARCH FOR THE WORD '");
+		ft_putstr_colour(CYAN, word);
+		ft_putstr_colour(CYAN, "':\n\n");
+	}
+	if (flag == 2)
+	{
+		ft_putstr_colour(YELLOW, ft_itoa((*book)->page_no));		//needs more work
+		ft_putstr_colour(YELLOW, " : ");
+		ft_putstr_colour(YELLOW, (*book)->text);
+	}
+	if (flag == 3)
+	{
+		ft_putstr_colour(YELLOW, "Sorry, no instance of the word '");
+		ft_putstr_colour(YELLOW, word);
+		ft_putstr_colour(YELLOW, "' was found.\n");
+	}
 }
 
-void	phrase_printing(char *text, char *phrase, int flag)
+void	phrase_printing(t_line **book, char *text, char *phrase, int flag)
 {
 	if (flag == 0)
 	{
 		ft_putstr_colour(CYAN, "PHRASE SEARCH:\nSelect a more detailed search option:\n");
 		ft_putstr("(1) : Search for every instance\n(2) : The first instance\n(3) : The last instance\n\n");
+	}
+	if (flag == 1)
+	{
+		ft_putstr("\e[1;1H\e[2J");
+		print_header();
+		print_details(book, text);
+		ft_putstr_colour(CYAN, "RESULTS OF THE SEARCH FOR THE PHRASE '");
+		ft_putstr_colour(CYAN, phrase);
+		ft_putstr_colour(CYAN, "':\n\n");
+	}
+	if (flag == 2)
+	{
+		ft_putstr_colour(YELLOW, ft_itoa((*book)->page_no));		//needs more work
+		ft_putstr_colour(YELLOW, " : ");
+		ft_putstr_colour(YELLOW, (*book)->text);
+	}
+	if (flag == 3)
+	{
+		ft_putstr_colour(YELLOW, "Sorry, no instance of the phrase '");
+		ft_putstr_colour(YELLOW, phrase);
+		ft_putstr_colour(YELLOW, "' was found.\n");
 	}
 }
 
@@ -116,7 +169,7 @@ void	clear_print(t_line **book, char *name, char *str, int flag)
 	}
 	if (flag == 3)
 	{
-		ft_putstr("\e[1;1H\e[2J");	//line, wordds OR phrases not found
+		ft_putstr("\e[1;1H\e[2J");	//ACCESS errors
 		print_header();
 		print_details(book, name);
 		ft_putstr_colour(RED, str);
