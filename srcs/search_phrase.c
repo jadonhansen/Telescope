@@ -3,6 +3,7 @@
 void	every_inst_ph(t_line **book, char *name, char *search)
 {
 	t_line	*temp = *book;
+	int		found = 0;
 
 	if (temp)
 	{
@@ -10,11 +11,18 @@ void	every_inst_ph(t_line **book, char *name, char *search)
 		while (temp != NULL)
 		{
 			if (find(temp->text, search))
+			{
+				found = 1;
 				phrase_printing(&temp, NULL, search, 2);
+			}
 			temp = temp->next;
 		}
+		if (found == 2)
+			return ;
 	}
-	clear_print(book, name, "ACCESS ERROR\n", 3);
+	else
+		clear_print(book, name, "ACCESS ERROR\n", 3);
+	phrase_printing(NULL, NULL, search, 3);
 }
 
 void	first_inst_ph(t_line **book, char *name, char *search)
@@ -33,9 +41,11 @@ void	first_inst_ph(t_line **book, char *name, char *search)
 			}
 			temp = temp->next;
 		}
-		phrase_printing(NULL, NULL, search, 3);
+		return ;
 	}
-	clear_print(book, name, "ACCESS ERROR\n", 3);
+	else
+		clear_print(book, name, "ACCESS ERROR\n", 3);
+	phrase_printing(NULL, NULL, search, 3);
 }
 
 void	last_inst_ph(t_line **book, char *name, char *search)
