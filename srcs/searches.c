@@ -1,51 +1,23 @@
 #include "../includes/telescope.h"
 
-int		line_exists(t_line **book, int line)
-{
-	t_line	*temp = *book;
-
-	if (temp)
-	{
-		while (temp->next != NULL)
-			temp = temp->next;
-	}
-	if (temp->page_no >= line)
-		return (1);
-	else
-		return (0);
-}
-
-void	line_search(t_line	**book, int line)
-{
-	int		count = 0;
-	t_line	*temp = *book;
-
-	if (temp)
-	{
-		ft_putchar('\n');
-		if (line_exists(book, line))
-		{
-			line_printing(NULL, 0, line, 0);
-			while (temp != NULL && count <= line + 1)
-			{
-				if ((temp->page_no == line) || (temp->page_no == line - 1) || (temp->page_no == line + 1))
-					line_printing(temp->text, temp->page_no, line, 1);
-				temp = temp->next;
-				count++;
-			}
-			return ;
-		}
-	}
-	clear_print(NULL, NULL, NULL, 0);
-	ft_putstr_colour(RED, "ERROR: We could not find the line you were looking for!\n");
-}
-
-void	word_search(t_line	**book, char *name, char *search)
+int	word_search(t_line	**book, char *name, char *search)
 {
 	int	parameter = 0;
 	char *ans = NULL;
 
-	clear_print(book, name, NULL, 1);
+	if (word_count(search) != 1)
+	{
+		ft_putstr("\e[1;1H\e[2J");
+		print_header();
+		print_details(book, name);
+		print_param();
+		ft_putstr_colour(RED, "You have entered more than one word but have chosen the 'Search for a specific word' option! Please try again.\n\n");
+		ft_putstr_colour(CYAN, "Please enter your search word below and press ENTER:\n");
+		return (0);
+	}
+	ft_putstr("\e[1;1H\e[2J");
+	print_header();
+	print_details(book, name);
 	WORD:
 	word_printing(search, NULL, 0);
 	get_next_line(0, &ans);
@@ -55,17 +27,33 @@ void	word_search(t_line	**book, char *name, char *search)
 	}
 	else
 	{
-		clear_print(book, name, "Please enter a valid option!\n\n", 4);
+		ft_putstr("\e[1;1H\e[2J");
+		print_header();
+		print_details(book, name);
+		ft_putstr_colour(RED, "Please enter a valid option!\n\n");
 		goto WORD;
 	}
+	return (1);
 }
 
-void	phrase_search(t_line **book, char *name, char *search)
+int	phrase_search(t_line **book, char *name, char *search)
 {
 	int	parameter = 0;
 	char *ans = NULL;
 
-	clear_print(book, name, NULL, 1);
+	if (word_count(search) < 2)
+	{
+		ft_putstr("\e[1;1H\e[2J");
+		print_header();
+		print_details(book, name);
+		print_param();
+		ft_putstr_colour(RED,  "Your input did not constitute to a phrase. Make sure you are typing in more than one word! Please try again.\n\n");
+		ft_putstr_colour(CYAN, "Please enter your search phrase below and press ENTER:\n");
+		return (0);
+	}
+	ft_putstr("\e[1;1H\e[2J");
+	print_header();
+	print_details(book, name);
 	PHRASE:
 	phrase_printing(search, NULL, 0);
 	get_next_line(0, &ans);
@@ -75,7 +63,52 @@ void	phrase_search(t_line **book, char *name, char *search)
 	}
 	else
 	{
-		clear_print(book, name, "Please enter a valid option!\n\n", 4);
+		ft_putstr("\e[1;1H\e[2J");
+		print_header();
+		print_details(book, name);
+		ft_putstr_colour(RED, "Please enter a valid option!\n\n");
 		goto PHRASE;
 	}
+	return (1);
+}
+
+int	line_search(t_line	**book, char *name, char *search)
+{
+	int		count = 0;
+	int		line = ft_atoi(search);
+	t_line	*temp = *book;
+
+	if (word_count(search) != 1 || !(strdigitwhitespace(search)))
+	{
+		ft_putstr("\e[1;1H\e[2J");
+		print_header();
+		print_details(book, name);
+		print_param();
+		ft_putstr_colour(RED, "Your input did not constitute to a line number. Make sure you are typing in a valid line number! Please try again.\n\n");
+		ft_putstr_colour(CYAN, "Please enter your line number below and press ENTER:\n");
+		return (0);
+	}
+	if (temp)
+	{
+		ft_putchar('\n');
+		if (line_exists(book, line))
+		{
+			ft_putstr("\e[1;1H\e[2J");
+			print_header();
+			print_details(book, name);
+			ft_putstr_colour(CYAN, "RESULTS OF THE SEARCH FOR LINE ");
+			ft_putstr_colour(CYAN, ft_itoa(line));
+			ft_putstr_colour(CYAN, ":\n\n");
+			while (temp != NULL && count <= line + 1)
+			{
+				if ((temp->page_no == line) || (temp->page_no == line - 1) || (temp->page_no == line + 1))
+					line_printing(temp->text, temp->page_no, line);
+				temp = temp->next;
+				count++;
+			}
+			return (1);
+		}
+	}
+	clear_print(book, name, "ERROR: We could not find the line you were looking for!\n", 3);
+	return (1);
 }
