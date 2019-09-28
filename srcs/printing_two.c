@@ -5,8 +5,9 @@ void	highlight_output(char *text, int page, char *search)
 	int	i = 0;
 	int	j;
 	int save;
+	char *page_wrd = ft_itoa(page);
 
-	ft_putstr_colour(YELLOW, ft_itoa(page));
+	ft_putstr_colour(YELLOW, page_wrd);
 	ft_putstr(" : ");
 	while (text[i] != '\0')
 	{
@@ -35,28 +36,33 @@ void	highlight_output(char *text, int page, char *search)
 		}
 	}
 	ft_putchar('\n');
+	free(page_wrd);
 }
 
 void	line_printing(t_line **book, char *text, int page, int line, int flag)
 {
+	char *str = NULL;
+
 	if (flag == 0)
 	{
+		str = ft_itoa(line);
 		ft_putstr("\e[1;1H\e[2J");
 		print_header();
 		print_details(book, text);
 		ft_putstr_colour(CYAN, "RESULTS OF THE SEARCH FOR LINE ");
-		ft_putstr_colour(CYAN, ft_itoa(line));
+		ft_putstr_colour(CYAN, str);
 		ft_putstr_colour(CYAN, ":\n\n");
 	}
 	else if (flag == 1)
 	{
+		str = ft_itoa(line);
 		ft_putstr("\e[1;1H\e[2J");
 		print_header();
 		ft_putstr_colour(CYAN, "RESULTS OF THE SEARCH FOR LINE ");
-		ft_putstr_colour(CYAN, ft_itoa(line));
+		ft_putstr_colour(CYAN, str);
 		ft_putstr_colour(CYAN, ":\n\n");
 		ft_putstr_colour(YELLOW, "Sorry, we could not find line '");
-		ft_putstr_colour(YELLOW, ft_itoa(line));
+		ft_putstr_colour(YELLOW, str);
 		ft_putstr_colour(YELLOW, "'.\n");
 	}
 	else if (page < line || page > line)
@@ -68,11 +74,13 @@ void	line_printing(t_line **book, char *text, int page, int line, int flag)
 	}
 	else
 	{
-		ft_putstr_colour(BOLD_YELLOW, ft_itoa(page));
+		str = ft_itoa(page);
+		ft_putstr_colour(BOLD_YELLOW, str);
 		ft_putstr_colour(BOLD_YELLOW, ": ");
 		ft_putstr_colour(BOLD_YELLOW, text);
 		ft_putchar('\n');
 	}
+	free(str);
 }
 
 void	word_printing(t_line **book, char *name, char *word, int flag)

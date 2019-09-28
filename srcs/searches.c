@@ -9,9 +9,7 @@ int	word_search(t_line	**book, char *name, char *search)
 		input_err(book, name, "You have entered more than one word but have chosen the 'Search for a specific word' option! Please try again.\n", "Please enter your search word below and press ENTER:\n");
 		return (0);
 	}
-	ft_putstr("\e[1;1H\e[2J");	//
-	print_header();
-	print_details(book, name);
+	clear_print(book, name, NULL, 4);
 	WORD:
 	word_printing(NULL, NULL, NULL, 0);
 	get_next_line(0, &ans);
@@ -23,10 +21,7 @@ int	word_search(t_line	**book, char *name, char *search)
 		last_inst_wrd(book, name, search);
 	else
 	{
-		ft_putstr("\e[1;1H\e[2J");	//
-		print_header();
-		print_details(book, name);
-		ft_putstr_colour(RED, "Please enter a valid option!\n\n");
+		clear_print(book, name, "Please enter a valid option!\n\n", 3);
 		goto WORD;
 	}
 	free(ans);
@@ -42,9 +37,7 @@ int	phrase_search(t_line **book, char *name, char *search)
 		input_err(book, name, "Your input did not constitute to a phrase. Make sure you are typing in more than one word! Please try again.\n", "Please enter your search phrase below and press ENTER:\n");
 		return (0);
 	}
-	ft_putstr("\e[1;1H\e[2J");		//
-	print_header();
-	print_details(book, name);
+	clear_print(book, name, NULL, 4);
 	PHRASE:
 	phrase_printing(NULL, NULL, NULL, 0);
 	get_next_line(0, &ans);
@@ -56,10 +49,7 @@ int	phrase_search(t_line **book, char *name, char *search)
 		last_inst_ph(book, name, search);
 	else
 	{
-		ft_putstr("\e[1;1H\e[2J");		//
-		print_header();
-		print_details(book, name);
-		ft_putstr_colour(RED, "Please enter a valid option!\n\n");
+		clear_print(book, name, "Please enter a valid option!\n\n", 3);
 		goto PHRASE;
 	}
 	free(ans);

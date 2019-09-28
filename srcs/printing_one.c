@@ -58,7 +58,7 @@ void	clear_print(t_line **book, char *name, char *str, int flag)
 {
 	if (flag == 0)
 	{
-		ft_putstr("\e[1;1H\e[2J");	//for main search options (entering in 1, 2 or 3)
+		ft_putstr("\e[1;1H\e[2J");	//displaying main search options (1, 2, 3 or 4)
 		print_header();
 		print_details(book, name);
 		print_param();
@@ -73,7 +73,7 @@ void	clear_print(t_line **book, char *name, char *str, int flag)
 	}
 	if (flag == 2)
 	{
-		ft_putstr("\e[1;1H\e[2J");	//for error of main search options
+		ft_putstr("\e[1;1H\e[2J");	//error of 'search option' input
 		print_header();
 		print_details(book, name);
 		print_param();
@@ -81,9 +81,15 @@ void	clear_print(t_line **book, char *name, char *str, int flag)
 	}
 	if (flag == 3)
 	{
-		ft_putstr("\e[1;1H\e[2J");	//ACCESS errors
+		ft_putstr("\e[1;1H\e[2J");	//ACCESS errors && phrase/word extra options input error
 		print_header();
 		print_details(book, name);
 		ft_putstr_colour(RED, str);
+	}
+	if (flag == 4)
+	{
+		ft_putstr("\e[1;1H\e[2J");	//used in word && phrase search
+		print_header();
+		print_details(book, name);
 	}
 }
