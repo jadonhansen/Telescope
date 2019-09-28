@@ -12,14 +12,17 @@
     -The first instance
     -The last instance
 
-#### Main concepts:
+### Using the program: (only on MacOS)
+    1. run the command 'Make' in your terminal (in the folders location)
+    2. type the command "./Telescope filename.txt" (with your document/file)
+    3. ;)
+
+### Main concepts learnt:
     1. lists
     2. file descriptors
     3. string manipulation
     4. program flow using 'goto' statements
     5. standard input (terminal)
 
-### Using the program: (only on MacOS)
-    1. run the command 'Make' in your terminal (in the folders location)
-    2. type the command "./Telescope filename.txt" (with your document/file)
-    3. ;)
+
+A personal project. 28/09/2019
