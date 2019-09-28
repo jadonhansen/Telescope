@@ -1,13 +1,4 @@
-# Telescope
-
-============================================
-/\                                        /\
-||                                        ||
-||               TELESCOPE©               ||
-||          A light in the dark 💡        ||
-||                                        ||
-||                                        ||
-============================================
+# Telescope© A light in the dark 💡
 
 ## Task: A program that takes in a file or document(text based) as an argument and provides the user with various search options. It will then searhc the document for what the user has asked for and outputs the respective results.
 
