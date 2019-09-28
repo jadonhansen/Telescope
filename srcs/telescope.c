@@ -34,9 +34,9 @@ int		main(int argc, char **argv)
 		}
 	}
 	close(fd);
-	if (check_content(&head, argv[1]))		//not working
+	if (is_content(&head, argv[1]))
 		options(&head, argv[1]);
-	if (head != NULL)
-		free_book(&head);
+	free_book(&head);
+	while (1);
 	return (0);
 }

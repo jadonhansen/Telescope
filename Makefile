@@ -1,8 +1,9 @@
 HM = Telescope
 LIB = libft
 FLAGS = -Wall -Werror -Wextra
-SRCS = ./srcs/Telescope.c ./srcs/struct_handling.c ./srcs/options.c ./srcs/printing.c
+SRCS = ./srcs/Telescope.c ./srcs/struct_handling.c ./srcs/options.c ./srcs/printing_one.c
 SRCS += ./srcs/searches.c ./srcs/checks.c ./srcs/search_word.c ./srcs/search_phrase.c
+SRCS += ./srcs/printing_two.c
 OPTIONS = -I./srcs/libft -lft -L./srcs/libft
 
 all: $(LIB) $(HM)

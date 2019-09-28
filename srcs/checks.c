@@ -77,28 +77,12 @@ int		line_exists(t_line **book, int line)
 	return (0);
 }
 
-int		check_content(t_line **book, char *name)
+int		is_content(t_line **book, char *name)
 {
 	t_line	*temp = *book;
 
-	if (temp)
+	if (!(temp))
 	{
-		if (temp->text == NULL)
-		{
-			ft_putstr("\e[1;1H\e[2J");
-			print_header();
-			print_details(book, name);
-			ft_putstr_colour(RED, "Oops! No content found in file '");
-			ft_putstr_colour(RED, name);
-			ft_putstr_colour(RED, "'\n");
-			return (0);
-		}
-	}
-	else
-	{
-		ft_putstr("\e[1;1H\e[2J");
-		print_header();
-		print_details(book, name);
 		ft_putstr_colour(RED, "Oops! No content found in file '");
 		ft_putstr_colour(RED, name);
 		ft_putstr_colour(RED, "'\n");

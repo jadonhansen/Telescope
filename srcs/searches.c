@@ -2,7 +2,6 @@
 
 int	word_search(t_line	**book, char *name, char *search)
 {
-	int	parameter = 0;
 	char *ans = NULL;
 
 	if (word_count(search) != 1)
@@ -41,7 +40,6 @@ int	word_search(t_line	**book, char *name, char *search)
 
 int	phrase_search(t_line **book, char *name, char *search)
 {
-	int	parameter = 0;
 	char *ans = NULL;
 
 	if (word_count(search) < 2)
@@ -96,7 +94,6 @@ int	line_search(t_line	**book, char *name, char *search)
 	}
 	if (temp)
 	{
-		ft_putchar('\n');
 		if (line_exists(book, line))
 		{
 			ft_putstr("\e[1;1H\e[2J");	//

@@ -3,7 +3,7 @@
 void	options(t_line **book, char *name)
 {
 	char	*param = NULL;
-	char	*search;
+	char	*search = NULL;
 
 	clear_print(book, name, NULL, 0);
 	ACTION:
@@ -33,14 +33,12 @@ void	options(t_line **book, char *name)
 			goto LINE_ERR;
 	}
 	else if (ft_atoi(param) == 4)
-	{
-		free(param);
-		exit_print(book);
-	}
+		exit_print();
 	else
 	{
-		clear_print(book, name, "You have not entered a valid option! Please try again.\n", 2);
+		clear_print(book, name, "YOU HAVE NOT ENTERED A VALID OPTION! PLEASE TRY AGAIN.\n", 2);
 		goto ACTION;
 	}
+	free(param);
 	free(search);
 }
