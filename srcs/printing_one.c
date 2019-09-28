@@ -34,7 +34,7 @@ void	print_details(t_line **book, char *name)
 void	print_param()
 {
 	ft_putstr_colour(CYAN, "\nHow would you like to search your document? Enter your chosen option and press ENTER\n");
-	ft_putstr("(1) : Search for a specific word\n(2) : Search for specific phrase\n(3) : Search by line number\n(4) : Quit program\n\n");
+	ft_putstr("(1) : Search for a specific word\n(2) : Search for specific phrase\n(3) : Search by line number\n(Q) : Quit program\n\n");
 }
 void	exit_print()
 {

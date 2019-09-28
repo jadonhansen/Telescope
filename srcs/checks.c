@@ -15,7 +15,7 @@ int		find(char *line, char *search)
 				i++;
 				j++;
 			}
-			if (search[j] == '\0' && (line[i] == ' ' || line[i] == '\t'))
+			if (search[j] == '\0' && (line[i] == ' ' || line[i] == '\t' || line[i] == '\0'))
 				return (1);
 			i++;
 		}

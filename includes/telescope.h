@@ -41,8 +41,6 @@ void			line_printing(t_line **book, char *text, int page, int line, int flag);
 void			word_printing(t_line **book, char *name, char *word, int flag);
 void			phrase_printing(t_line **book, char *name, char *phrase, int flag);
 void			highlight_output(char *text, int page, char *search);
-void			clear_print(t_line **book, char *name, char *str, int flag); //under construction
-
-//emoji for pushing: 💡
+void			clear_print(t_line **book, char *name, char *str, int flag);
 
 #endif

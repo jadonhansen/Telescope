@@ -37,6 +37,5 @@ int		main(int argc, char **argv)
 	if (is_content(&head, argv[1]))
 		options(&head, argv[1]);
 	free_book(&head);
-	while (1);
 	return (0);
 }

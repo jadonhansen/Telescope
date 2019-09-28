@@ -18,7 +18,7 @@ void	highlight_output(char *text, int page, char *search)
 			i++;
 			j++;
 		}
-		if (search[j] == '\0' && (text[i] == ' ' || text[i] == '\t'))
+		if (search[j] == '\0' && (text[i] == ' ' || text[i] == '\t' || text[i] == '\0'))
 		{
 			ft_putstr_colour(YELLOW, search);
 			i = save + j;

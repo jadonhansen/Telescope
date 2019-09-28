@@ -14,7 +14,10 @@ void	options(t_line **book, char *name)
 		WORD_ERR:
 		get_next_line(0, &search);
 		if (word_search(book, name, search) == 0)
+		{
+			free(search);
 			goto WORD_ERR;
+		}
 	}
 	else if (ft_atoi(param) == 2)
 	{
@@ -22,7 +25,10 @@ void	options(t_line **book, char *name)
 		PHRASE_ERR:
 		get_next_line(0, &search);
 		if (phrase_search(book, name, search) == 0)
+		{
+			free(search);
 			goto PHRASE_ERR;
+		}
 	}
 	else if (ft_atoi(param) == 3)
 	{
@@ -30,13 +36,17 @@ void	options(t_line **book, char *name)
 		LINE_ERR:
 		get_next_line(0, &search);
 		if (line_search(book, name, search) == 0)
+		{
+			free(search);
 			goto LINE_ERR;
+		}
 	}
-	else if (ft_atoi(param) == 4)
+	else if (ft_strequ(param, "Q"))
 		exit_print();
 	else
 	{
 		clear_print(book, name, "YOU HAVE NOT ENTERED A VALID OPTION! PLEASE TRY AGAIN.\n", 2);
+		free(param);
 		goto ACTION;
 	}
 	free(param);

@@ -22,6 +22,7 @@ int	word_search(t_line	**book, char *name, char *search)
 	else
 	{
 		clear_print(book, name, "Please enter a valid option!\n\n", 3);
+		free(ans);
 		goto WORD;
 	}
 	free(ans);
@@ -50,6 +51,7 @@ int	phrase_search(t_line **book, char *name, char *search)
 	else
 	{
 		clear_print(book, name, "Please enter a valid option!\n\n", 3);
+		free(ans);
 		goto PHRASE;
 	}
 	free(ans);
