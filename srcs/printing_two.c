@@ -37,9 +37,18 @@ void	highlight_output(char *text, int page, char *search)
 	ft_putchar('\n');
 }
 
-void	line_printing(char *text, int page, int line)
+void	line_printing(t_line **book, char *text, int page, int line, int flag)
 {
-	if (page == 0 && text == NULL)
+	if (flag == 0)
+	{
+		ft_putstr("\e[1;1H\e[2J");
+		print_header();
+		print_details(book, text);
+		ft_putstr_colour(CYAN, "RESULTS OF THE SEARCH FOR LINE ");
+		ft_putstr_colour(CYAN, ft_itoa(line));
+		ft_putstr_colour(CYAN, ":\n\n");
+	}
+	else if (flag == 1)
 	{
 		ft_putstr("\e[1;1H\e[2J");
 		print_header();

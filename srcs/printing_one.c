@@ -45,7 +45,13 @@ void	exit_print()
 
 void	input_err(t_line **book, char *name, char *one, char *two)
 {
-
+	ft_putstr("\e[1;1H\e[2J");
+	print_header();
+	print_details(book, name);
+	print_param();
+	ft_putstr_colour(RED, one);
+	ft_putchar('\n');
+	ft_putstr_colour(CYAN, two);
 }
 
 void	clear_print(t_line **book, char *name, char *str, int flag)

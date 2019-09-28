@@ -6,12 +6,7 @@ int	word_search(t_line	**book, char *name, char *search)
 
 	if (word_count(search) != 1)
 	{
-		ft_putstr("\e[1;1H\e[2J");	//
-		print_header();
-		print_details(book, name);
-		print_param();
-		ft_putstr_colour(RED, "You have entered more than one word but have chosen the 'Search for a specific word' option! Please try again.\n\n");
-		ft_putstr_colour(CYAN, "Please enter your search word below and press ENTER:\n");
+		input_err(book, name, "You have entered more than one word but have chosen the 'Search for a specific word' option! Please try again.\n", "Please enter your search word below and press ENTER:\n");
 		return (0);
 	}
 	ft_putstr("\e[1;1H\e[2J");	//
@@ -44,12 +39,7 @@ int	phrase_search(t_line **book, char *name, char *search)
 
 	if (word_count(search) < 2)
 	{
-		ft_putstr("\e[1;1H\e[2J");		//
-		print_header();
-		print_details(book, name);
-		print_param();
-		ft_putstr_colour(RED,  "Your input did not constitute to a phrase. Make sure you are typing in more than one word! Please try again.\n\n");
-		ft_putstr_colour(CYAN, "Please enter your search phrase below and press ENTER:\n");
+		input_err(book, name, "Your input did not constitute to a phrase. Make sure you are typing in more than one word! Please try again.\n", "Please enter your search phrase below and press ENTER:\n");
 		return (0);
 	}
 	ft_putstr("\e[1;1H\e[2J");		//
@@ -84,34 +74,24 @@ int	line_search(t_line	**book, char *name, char *search)
 
 	if (word_count(search) != 1 || !(strdigitwhitespace(search)))
 	{
-		ft_putstr("\e[1;1H\e[2J");	//
-		print_header();
-		print_details(book, name);
-		print_param();
-		ft_putstr_colour(RED, "Your input did not constitute to a line number. Make sure you are typing in a valid line number! Please try again.\n\n");
-		ft_putstr_colour(CYAN, "Please enter your line number below and press ENTER:\n");
+		input_err(book, name, "Your input did not constitute to a line number. Make sure you are typing in a valid line number! Please try again.\n", "Please enter your line number below and press ENTER:\n");
 		return (0);
 	}
 	if (temp)
 	{
 		if (line_exists(book, line))
 		{
-			ft_putstr("\e[1;1H\e[2J");	//
-			print_header();
-			print_details(book, name);
-			ft_putstr_colour(CYAN, "RESULTS OF THE SEARCH FOR LINE ");
-			ft_putstr_colour(CYAN, ft_itoa(line));
-			ft_putstr_colour(CYAN, ":\n\n");
+			line_printing(book, name, 0, line, 0);
 			while (temp != NULL && count <= line + 1)
 			{
 				if ((temp->page_no == line) || (temp->page_no == line - 1) || (temp->page_no == line + 1))
-					line_printing(temp->text, temp->page_no, line);
+					line_printing(book, temp->text, temp->page_no, line, 100);
 				temp = temp->next;
 				count++;
 			}
 			return (1);
 		}
-		line_printing(NULL, 0, line);
+		line_printing(book, name, 0, line, 1);
 	}
 	else
 		clear_print(book, name, "ACCESS ERROR\n", 3);
